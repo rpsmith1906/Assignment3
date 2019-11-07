@@ -1,0 +1,7 @@
+flask_bcrypt
+requests
+pytest
+flask_wtf
+flask_sqlalchemy
+bs4
+lxml

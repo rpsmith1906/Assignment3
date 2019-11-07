@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+
+<form action="/login" method="POST">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    <div class="login">
+        <div class="login-screen">
+            <div class="app-title">
+                <h1>Spell Checker</h1> 
+                    <h2>Login</h2>
+            </div>
+            <div class="col-md-8">
+                {% if messages %}
+                    {% for message in messages %}
+                       <div id=result class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="login-form">
+                <div class="control-group">
+		    <input id=uname type="text" class="login-field" value="" placeholder="Username" name="username">
+                    <label class="login-field-icon fui-user" for="login-name">
+                    </label>
+                    {% if form.username.errors %}
+                        <div id=result class="invalid-feedback">
+                            {% for error in form.username.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="control-group">
+		    <input id=pword type="password" class="login-field" value="" placeholder="Password" name="password">
+                    <label class="login-field-icon fui-lock" for="login-pass">
+                    </label>
+                    {% if form.password.errors %}
+                        <div id=result class="invalid-feedback">
+                            {% for error in form.password.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}                
+                </div>
+                <div class="control-group">
+                    <input id=2fa type="text" class="login-field" value="" placeholder="Two Factor Password" name="twofapassword">
+                    <label class="login-field-icon fui-lock" for="login-pass">
+                    </label>
+                    {% if form.twofapassword.errors %}
+                        <div id=result class="invalid-feedback">
+                            {% for error in form.twofapassword.errors %}
+                                <span>
+                                    {{ error }}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}                
+                </div>
+                <input type="submit" name="click" value="Log In" class="btn btn-primary btn-small btn-block">
+                <input type="submit" name="click" value="Register" class="btn btn-primary btn-small btn-block">
+            </div>
+        </div>
+    </div>
+</form>

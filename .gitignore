@@ -1,0 +1,5 @@
+__pycache__/
+.tox/
+.nox/
+.cache
+py36/

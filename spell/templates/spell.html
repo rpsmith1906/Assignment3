@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+
+<form action="/spell_check" method="POST">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    <div class="spell-checker">
+        <div class="app-title">
+            <h1>Spell Checker</h1> 
+        </div>
+        <div class="col-md-8">
+            {% if messages %}
+                {% for message in messages %}
+                    <div id={{status}} class="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="control-group spell-checker-input">
+            <textarea type="textarea" name="content" id="inputtext" placeholder="">
+            </textarea>
+        </div>
+        <input type="submit" name="click" value="Spell Check" class="btn btn-primary btn-large btn-block spell-buttons">
+        <input type="submit" name="click" value="Log Out" class="btn btn-primary btn-large btn-block spell-buttons">
+      
+            {% if message %}
+                <p id=misspelled></p>
+                    <div class="app-title">
+                        <h1>Spell Checker - Results</h1>
+                    </div>
+                    <h3>Submitted Text</h3>
+                    <div id=textout class="spell-checker-results">
+                        <span>
+                            {{ input }}
+                        </span>
+                    </div>
+                    <h3>Misspelled Words</h3>
+                    <div id=misspelled class="spell-checker-results">
+                        <span>
+                            {{ message }}
+                        </span>
+                    </div>
+                </p>
+            {% endif %}    
+        </div>
+    </div>
+</form>

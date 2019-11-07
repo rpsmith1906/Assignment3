@@ -1,0 +1,10 @@
+README.md
+setup.py
+spell/__init__.py
+spell/spell_forms.py
+spell/urls.py
+spell/userman.py
+spell.egg-info/PKG-INFO
+spell.egg-info/SOURCES.txt
+spell.egg-info/dependency_links.txt
+spell.egg-info/top_level.txt

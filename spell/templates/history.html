@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<style>
+body {
+    background-color: white;
+}
+</style>
+<form action="/history" method="POST">
+    {{ form.csrf_token }}
+    {{ form.name }}
+    {% if realuser == "admin" %}
+        <div class="admin-menu">
+            <span>
+                <input id=userquery type="text" class="login-field" placeholder="Username" name="username">
+                <input type="submit" name="click" value="Submit" class="btn btn-primary btn-small btn-block">
+            </span>
+        </div>
+    {% endif %}
+    <div class="app-title">
+    <h1>Spell Checker Submittal History for {{ user }}</h1>
+        <div class="inline-block">
+            <span>
+                Number of queries
+                <h id=numqueries> {{ Posts|length }}</h>
+
+            </span> 
+        </div>
+        {% if Posts %}
+            <div class=spell-checker-results>
+                {% for post in Posts %}
+                    <li><a id="query{{ post[0] }}" href="{{ url_for('history') }}/query{{ post[0] }}" >Spell Checker results for session {{ post[0] }}</a></li>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</form>

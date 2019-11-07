@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/static/style.css" type="text/css">
+<style>
+body {
+    background-color: white;
+}
+</style>
+<form>
+    {{ form.csrf_token }}
+    {{ form.name }}
+    
+    {% if (realuser == Post[1] or ( realuser =="admin" and Post ) ) %}
+        <h1>Spell Checker Submittal History Details for session {{ Post[0] }}</h1>
+        <div >
+            Query ID    :<h3 id=queryid > {{ Post[0] }}</h3>
+            Submit User :<h3 id=username > {{ Post[1] }}</h3>
+            Submitted   :<h3 id=querytext > {{ Post[2] }}</h3>
+            Mispelled   :<h3 id=queryresults > {{ Post[3] }}</h3>
+        </div>
+    {% else %}
+        <h1>Forbidden Page</h1>
+    {% endif %}
+</form>
