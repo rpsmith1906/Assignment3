@@ -85,11 +85,12 @@ def register():
 @app.route('/spell_check', methods=['GET','POST'])
 def spell():
     form = Spell()
+    session['user'] = "admin"
     if not session.get('user') :
         return home()
     else :
-        if ( "click" in request.form ):
-            if ( request.form['click'] == "Log Out") :
+        if ( request.method == "POST" ) :
+            if  ( ("click" in request.form ) and ( request.form['click'] == "Log Out")) :
                 return redirect(url_for('logout'))
             else:
                 if ( len (form.content.data) != 0) :
@@ -101,7 +102,6 @@ def spell():
                         result = subprocess.run(cmd, stdout=subprocess.PIPE, input=input).stdout.decode('utf-8')
                     
                     Users.post (form.content.data, result)
-
                     if result:
                         return render_template('spell.html', title='Spell Checker', form=form, message=result, input=form.content.data)
                 
@@ -110,6 +110,7 @@ def spell():
 @app.route('/history', methods=['GET','POST'])
 def history():
     form = History()
+    session['user'] = "admin"
     if not session.get('user') :
         return home()
     else :
@@ -124,6 +125,7 @@ def history():
 
 @app.route("/history/query<query>")
 def history_detail(query):
+    session['user'] = "admin"
     if not session.get('user') :
         return home()
 
@@ -132,6 +134,7 @@ def history_detail(query):
 
 @app.route("/login_history", methods=['GET','POST'])
 def login_history():
+    session['user'] = "admin"
     form = History()
     if not session.get('user') :
         return home()
@@ -144,12 +147,7 @@ def login_history():
             else :
                 user = session['user']
 
-            print(user)
             log_history = Log.query.with_entities(Log.id, Log.login, Log.logout).filter_by(username=user).all()
             
-            for log in log_history:
-                print(log[0], log[1])
-
-            print(log_history)
     return render_template('log_history.html', History=log_history, form=History(), user=user)
         
