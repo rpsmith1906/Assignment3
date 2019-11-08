@@ -1,4 +1,5 @@
 __pycache__/
+spell/__init__.pyc
 .tox/
 .nox/
 .cache

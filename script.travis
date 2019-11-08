@@ -2,4 +2,12 @@
 
 python ./create_db.py
 flask run &
-pytest
+
+if [ -f /usr/bin/pytest-3 ]
+then
+     pytest-3
+else
+     pytest
+fi
+
+kill %1
