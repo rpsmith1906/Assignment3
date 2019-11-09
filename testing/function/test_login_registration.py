@@ -18,8 +18,9 @@ def get_token(addr):
 
 def login(user, pword, twofa, search, id_field ):
     addr = address + "/login"
-    #csrftoken = get_token(addr)
+    csrftoken = get_token(addr)
     login_data = {
+        'csrf_token':csrftoken,
         'username': user,
         'password': pword,
         'twofapassword': twofa
@@ -32,8 +33,9 @@ def login(user, pword, twofa, search, id_field ):
 
 def registration(user, pword, twofa, search, id_field ):
     addr = address + "/register"
-    #csrftoken = get_token(addr)
+    csrftoken = get_token(addr)
     login_data = {
+        'csrf_token':csrftoken,
         'username': user,
         'password': pword,
         'twofapassword': twofa

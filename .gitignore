@@ -4,3 +4,4 @@ spell/__init__.pyc
 .nox/
 .cache
 py36/
+spell/security/test.db

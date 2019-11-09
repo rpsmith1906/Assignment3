@@ -85,7 +85,6 @@ def register():
 @app.route('/spell_check', methods=['GET','POST'])
 def spell():
     form = Spell()
-    session['user'] = "admin"
     if not session.get('user') :
         return home()
     else :
@@ -110,7 +109,6 @@ def spell():
 @app.route('/history', methods=['GET','POST'])
 def history():
     form = History()
-    session['user'] = "admin"
     if not session.get('user') :
         return home()
     else :
@@ -125,7 +123,6 @@ def history():
 
 @app.route("/history/query<query>")
 def history_detail(query):
-    session['user'] = "admin"
     if not session.get('user') :
         return home()
 
@@ -134,7 +131,6 @@ def history_detail(query):
 
 @app.route("/login_history", methods=['GET','POST'])
 def login_history():
-    session['user'] = "admin"
     form = History()
     if not session.get('user') :
         return home()
