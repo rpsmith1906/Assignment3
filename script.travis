@@ -10,4 +10,8 @@ else
      pytest
 fi
 
+error=$?
+
 kill %1
+
+exit $error
