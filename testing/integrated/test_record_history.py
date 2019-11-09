@@ -19,9 +19,7 @@ def get_token(addr):
 
 def login(user, pword, twofa, search, id_field ):
     addr = address + "/login"
-    csrftoken = get_token(addr)
     login_data = {
-        'csrf_token':csrftoken,
         'username': user,
         'password': pword,
         'twofapassword': twofa
@@ -34,9 +32,7 @@ def login(user, pword, twofa, search, id_field ):
 
 def registration(user, pword, twofa, search, id_field ):
     addr = address + "/register"
-    csrftoken = get_token(addr)
     login_data = {
-        'csrf_token':csrftoken,
         'username': user,
         'password': pword,
         'twofapassword': twofa
@@ -51,9 +47,7 @@ def get_history(user):
     addr = address + "/history"
 
     if ( len(user) > 0 ) :
-        csrftoken = get_token(addr)
         data = {
-            'csrf_token':csrftoken,
             'username': user    
         }
         r = client.post(addr, data)
@@ -69,9 +63,7 @@ def get_history(user):
 
 def post_spell():
     addr = address + "/spell_check"
-    csrftoken = get_token(addr)
     data = {
-        'csrf_token':csrftoken,
         'content': "This is a test",
     }
 
