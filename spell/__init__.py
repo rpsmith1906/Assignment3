@@ -19,7 +19,7 @@ app.config['port'] = "5000"
 app.config['debug'] = "True"
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 
-app.config['WTF_CSRF_ENABLED'] = False
+#app.config['WTF_CSRF_ENABLED'] = False
 
 from spell import urls
 
