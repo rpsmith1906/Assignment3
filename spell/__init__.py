@@ -20,14 +20,11 @@ app.config['port'] = "5000"
 app.config['debug'] = "True"
 
 if ( os.path.isfile( docker_secret_file ) ) :
-     print ("Here", docker_secret_file )
      docker_secret = open( docker_secret_file )
      app.config['SECRET_KEY'] = docker_secret.read().rstrip()
-     print (app.config['SECRET_KEY'])
      docker_secret.close()
      #app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
 else:
-     print("Could not find file")
      app.config['WTF_CSRF_ENABLED'] = False
 
 from spell import urls
